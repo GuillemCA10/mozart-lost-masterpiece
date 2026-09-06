@@ -1,0 +1,217 @@
+{
+  "static/img/backdrops/title.png": {
+    "scratch_name": "title",
+    "source_hash": "9ce9ca7407df18b7dec4a4d9b6a6d6b5",
+    "target_sprite": "Stage"
+  },
+  "static/img/backdrops/stage2.png": {
+    "scratch_name": "stage2",
+    "source_hash": "52ad0b3a93e6e87a246ebfa7f10043cc",
+    "target_sprite": "Stage"
+  },
+  "static/img/backdrops/mozart-endscreen1.png": {
+    "scratch_name": "Mozart endscreen1",
+    "source_hash": "da5a157f213629624d6cf2f915ddb351",
+    "target_sprite": "Stage"
+  },
+  "static/img/backdrops/mozart-endscreen2.png": {
+    "scratch_name": "Mozart endscreen2",
+    "source_hash": "7422999ac11a097876083ad02db613cb",
+    "target_sprite": "Stage"
+  },
+  "static/img/backdrops/mozart-endscreen3.png": {
+    "scratch_name": "Mozart endscreen3",
+    "source_hash": "89ee7c05fd2ada2a760362bfa29dbaad",
+    "target_sprite": "Stage"
+  },
+  "static/img/backdrops/mozart-endscreen4.png": {
+    "scratch_name": "Mozart endscreen4",
+    "source_hash": "f5651ddcb4406c665385cd523da92041",
+    "target_sprite": "Stage"
+  },
+  "static/audio/40.mp3": {
+    "scratch_name": "40",
+    "source_hash": "f1bf524707319e2375ef10fd2297bb5e",
+    "target_sprite": "Stage"
+  },
+  "static/audio/8bit-mozart-sonata-16.mp3": {
+    "scratch_name": "8bit Mozart Sonata 16",
+    "source_hash": "904b1da54a768da77bd9ee869382a87a",
+    "target_sprite": "Stage"
+  },
+  "static/img/mozart/mozart.png": {
+    "scratch_name": "mozart",
+    "source_hash": "b17ee0571672072aa65296ae25c5bc87",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/walking001.png": {
+    "scratch_name": "walking001",
+    "source_hash": "4188a4f716556403e54d7249e00b299c",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/walking004.png": {
+    "scratch_name": "walking004",
+    "source_hash": "8f2259d333590a722889fd20c782b068",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/walking007.png": {
+    "scratch_name": "walking007",
+    "source_hash": "53f554164878f1ee6327c1c4c040586f",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/walking010.png": {
+    "scratch_name": "walking010",
+    "source_hash": "7fe4d38281121a6aa46f99c0320c0d4a",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/walking013.png": {
+    "scratch_name": "walking013",
+    "source_hash": "505dc3ab37a8fd031ed8d95a894e4e54",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/walking016.png": {
+    "scratch_name": "walking016",
+    "source_hash": "ac5f3cc244d3d7bd060dca1e1d69783e",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/walking019.png": {
+    "scratch_name": "walking019",
+    "source_hash": "9934b9bf081d83ae2edc5d9fee15e0cf",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/walking022.png": {
+    "scratch_name": "walking022",
+    "source_hash": "62ba5c4bd651e766e844d4cc9791901b",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin01.png": {
+    "scratch_name": "violin01",
+    "source_hash": "f1a161821f8c7127610d0018d5af491a",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin04.png": {
+    "scratch_name": "violin04",
+    "source_hash": "3d9a30fbb2b108ca6ea4450e628c8645",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin07.png": {
+    "scratch_name": "violin07",
+    "source_hash": "b372f98cb50e7da02b4ae2ac36878cfe",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin10.png": {
+    "scratch_name": "violin10",
+    "source_hash": "5a1daeca20292cc8bcd7b95cf9845e3e",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin13.png": {
+    "scratch_name": "violin13",
+    "source_hash": "e51d207638c0e6c0658aacc2d75220db",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin16.png": {
+    "scratch_name": "violin16",
+    "source_hash": "bae0bea92fbe27dd65aece6fb72f0ad2",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin19.png": {
+    "scratch_name": "violin19",
+    "source_hash": "7e59f09799864d5dd83e5ad4206bd55b",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin22.png": {
+    "scratch_name": "violin22",
+    "source_hash": "74b6599116762627ccbac82366bf3c26",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin25.png": {
+    "scratch_name": "violin25",
+    "source_hash": "37b9a617cda921c11a8b8f5653982d4a",
+    "target_sprite": "mozart"
+  },
+  "static/img/mozart/violin28.png": {
+    "scratch_name": "violin28",
+    "source_hash": "b36abfa21347639a65119cc0101f9f9d",
+    "target_sprite": "mozart"
+  },
+  "static/audio/astley.mp3": {
+    "scratch_name": "astley",
+    "source_hash": "42921b6b684f87384bb9d6c45799c409",
+    "target_sprite": "mozart"
+  },
+  "static/audio/astley1.mp3": {
+    "scratch_name": "astley1",
+    "source_hash": "334f3c4ad50c0ed2cbbaa774900d3e43",
+    "target_sprite": "mozart"
+  },
+  "static/audio/astley2.mp3": {
+    "scratch_name": "astley2",
+    "source_hash": "949579602012e8d43b3ab1671ce02fe0",
+    "target_sprite": "mozart"
+  },
+  "static/audio/astley3.mp3": {
+    "scratch_name": "astley3",
+    "source_hash": "883fabafe28b0c05dc798135f686eb9a",
+    "target_sprite": "mozart"
+  },
+  "static/audio/astley4.mp3": {
+    "scratch_name": "astley4",
+    "source_hash": "0581fd6fca7fcce00af8aec37f2ca97d",
+    "target_sprite": "mozart"
+  },
+  "static/audio/footsteps.wav": {
+    "scratch_name": "Footsteps",
+    "source_hash": "95c99734312016c50f548d6fc4c796e6",
+    "target_sprite": "mozart"
+  },
+  "static/img/sheets/a1.png": {
+    "scratch_name": "a1",
+    "source_hash": "4013d377279c93df596ea439e32fd821",
+    "target_sprite": "a1"
+  },
+  "static/img/sheets/a2.png": {
+    "scratch_name": "a2",
+    "source_hash": "f5954ecae3ddc07c76c9d6eb8e4da624",
+    "target_sprite": "a1"
+  },
+  "static/img/sheets/a3.png": {
+    "scratch_name": "a3",
+    "source_hash": "c0a573f19d8c23beb906af71584bcd06",
+    "target_sprite": "a1"
+  },
+  "static/img/sheets/a4.png": {
+    "scratch_name": "a4",
+    "source_hash": "51a886c584c766deec8134cfe666cd19",
+    "target_sprite": "a1"
+  },
+  "static/img/thumbs/score-sprite-no-bg.png": {
+    "scratch_name": "score sprite no bg",
+    "source_hash": "93edf0fe97d4b626f84eddec19b163d3",
+    "target_sprite": "score sprite no bg1"
+  },
+  "static/img/thumbs/reveal1.png": {
+    "scratch_name": "reveal1",
+    "source_hash": "93edf0fe97d4b626f84eddec19b163d3",
+    "target_sprite": "score sprite no bg1"
+  },
+  "static/img/thumbs/reveal2.png": {
+    "scratch_name": "reveal2",
+    "source_hash": "93edf0fe97d4b626f84eddec19b163d3",
+    "target_sprite": "score sprite no bg1"
+  },
+  "static/img/thumbs/reveal3.png": {
+    "scratch_name": "reveal3",
+    "source_hash": "93edf0fe97d4b626f84eddec19b163d3",
+    "target_sprite": "score sprite no bg1"
+  },
+  "static/img/thumbs/reveal4.png": {
+    "scratch_name": "reveal4",
+    "source_hash": "93edf0fe97d4b626f84eddec19b163d3",
+    "target_sprite": "score sprite no bg1"
+  },
+  "static/audio/rip.wav": {
+    "scratch_name": "Rip",
+    "source_hash": "4081f8fac2ca83bd34329400eb95bbde",
+    "target_sprite": "score sprite no bg1"
+  }
+}
