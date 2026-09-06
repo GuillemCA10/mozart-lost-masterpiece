@@ -1,0 +1,12 @@
+body {
+  background: #1a1a1a;
+  color: #e8e8e8;
+  font-family: Georgia, serif;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+#dialogue {
+  font-style: italic;
+}
