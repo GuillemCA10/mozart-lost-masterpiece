@@ -14,6 +14,9 @@ const state = {
   shuffle: []         // thumbnail position -> fragment ID
 };
 
+const sheet = document.getElementById("sheet");
+const dialogue = document.getElementById("dialogue");
+
 function shuffled() {
   const pool = [0, 1, 2, 3];
   const result = [];
@@ -31,6 +34,7 @@ document.querySelectorAll(".thumb").forEach(thumb => {
   thumb.addEventListener("click", () => {
     const position = Number(thumb.dataset.position);
     const fragment = state.shuffle[position];
-    console.log(position, fragment);
+    sheet.src = `/static/img/sheets/a${fragment}.png`;
+    sheet.hidden = false;
   });
 });
