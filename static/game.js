@@ -15,7 +15,7 @@ const state = {
 };
 
 function shuffled() {
-  const pool = [1, 2, 3, 4];
+  const pool = [0, 1, 2, 3];
   const result = [];
   while (pool.length > 0) {
     const i = Math.floor(Math.random() * pool.length);
@@ -26,3 +26,11 @@ function shuffled() {
 }
 
 state.shuffle = shuffled();
+
+document.querySelectorAll(".thumb").forEach(thumb => {
+  thumb.addEventListener("click", () => {
+    const position = Number(thumb.dataset.position);
+    const fragment = state.shuffle[position];
+    console.log(position, fragment);
+  });
+});
