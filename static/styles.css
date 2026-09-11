@@ -10,3 +10,13 @@ body {
 #dialogue {
   font-style: italic;
 }
+
+#thumbs {
+  display: flex;
+  gap: 1rem;
+}
+
+.thumb {
+  width: 120px;
+  cursor: pointer;
+}

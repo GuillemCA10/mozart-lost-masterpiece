@@ -8,8 +8,14 @@
   </head>
   <body>
     <main id="stage">
-      <h1>Mozart's Lost Masterpiece</h1>
-      <p id="dialogue">Template is alive.</p>
+      <p id="dialogue">Click a thumbnail.</p>
+
+      <div id="thumbs">
+        <img class="thumb" data-position="0" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
+        <img class="thumb" data-position="1" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
+        <img class="thumb" data-position="2" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
+        <img class="thumb" data-position="3" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
+      </div>
     </main>
     <script src="{{ url_for('static', filename='game.js') }}"></script>
   </body>
