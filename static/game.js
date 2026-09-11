@@ -34,6 +34,20 @@ while (state.shuffle.join() === "0,1,2,3") {
   state.shuffle = shuffled();
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function say(text, seconds) {
+  dialogue.textContent = text;
+  await sleep(seconds * 1000);
+}
+
+async function intro() {
+  await say("Damn!", 1.5);
+  await say("The pages of my newest masterpiece... they're all scattered!", 3);
+  await say("I'm gonna need you to help me put them back together...", 3);
+}
 
 document.querySelectorAll(".thumb").forEach(thumb => {
   thumb.addEventListener("click", () => {
@@ -45,3 +59,5 @@ document.querySelectorAll(".thumb").forEach(thumb => {
     player.play();
   });
 });
+
+intro();
