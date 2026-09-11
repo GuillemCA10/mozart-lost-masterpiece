@@ -29,6 +29,10 @@ function shuffled() {
 }
 
 state.shuffle = shuffled();
+while (state.shuffle.join() === "0,1,2,3") {
+  state.shuffle = shuffled();
+}
+
 
 document.querySelectorAll(".thumb").forEach(thumb => {
   thumb.addEventListener("click", () => {
