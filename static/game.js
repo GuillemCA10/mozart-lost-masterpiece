@@ -16,6 +16,7 @@ const state = {
 
 const sheet = document.getElementById("sheet");
 const dialogue = document.getElementById("dialogue");
+const player = new Audio();
 
 function shuffled() {
   const pool = [0, 1, 2, 3];
@@ -40,5 +41,7 @@ document.querySelectorAll(".thumb").forEach(thumb => {
     const fragment = state.shuffle[position];
     sheet.src = `/static/img/sheets/a${fragment}.png`;
     sheet.hidden = false;
+    player.src = `/static/audio/astley${fragment}.mp3`;
+    player.play();
   });
 });
