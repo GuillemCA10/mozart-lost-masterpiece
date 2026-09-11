@@ -8,7 +8,11 @@
   </head>
   <body>
     <main id="stage">
-      <p id="dialogue">Click a thumbnail.</p>
+      <p id="dialogue"></p>
+      <div id="choices" hidden>
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+      </div>
       <img id="sheet" src="" alt="Sheet music fragment" hidden>     
       <div id="thumbs">
         <img class="thumb" data-position="0" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">

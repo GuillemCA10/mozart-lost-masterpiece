@@ -16,6 +16,7 @@ const state = {
 
 const sheet = document.getElementById("sheet");
 const dialogue = document.getElementById("dialogue");
+const choices = document.getElementById("choices");
 const player = new Audio();
 
 function shuffled() {
@@ -43,10 +44,38 @@ async function say(text, seconds) {
   await sleep(seconds * 1000);
 }
 
+function ask(question) {
+  dialogue.textContent = question;
+  choices.hidden = false;
+  return new Promise(resolve => {
+    document.getElementById("yes").onclick = () => {
+      choices.hidden = true;
+      resolve(true);
+    };
+    document.getElementById("no").onclick = () => {
+      choices.hidden = true;
+      resolve(false);
+    };
+  });
+}
+
 async function intro() {
   await say("Damn!", 1.5);
   await say("The pages of my newest masterpiece... they're all scattered!", 3);
+  await say("Despite being the GOAT of composers...", 2);
   await say("I'm gonna need you to help me put them back together...", 3);
+
+  let helping = false;
+  while (!helping) {
+    helping = await ask("Will you help me put the music in the right order?");
+    if (!helping) {
+      await say("Come on! I'm the greatest composer who ever lived.", 2);
+      await say("You can't deny the one and only WA...", 2);
+    }
+  }
+
+  await say("Cool! Let's get to it.", 2);
+  state.phase = PHASE.SELECTING;
 }
 
 document.querySelectorAll(".thumb").forEach(thumb => {
