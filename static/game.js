@@ -40,6 +40,14 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function playFragment(fragment) {
+  return new Promise(resolve => {
+    player.src = `/static/audio/astley${fragment}.mp3`;
+    player.onended = resolve;
+    player.play();
+  });
+}
+
 async function say(text, seconds) {
   dialogue.textContent = text;
   await sleep(seconds * 1000);
@@ -91,7 +99,6 @@ async function handleSelect(event) {
   }
 
   state.phase = PHASE.CONFIRMING;
-
   sheet.src = `/static/img/sheets/a${fragment}.png`;
   sheet.hidden = false;
   player.src = `/static/audio/astley${fragment}.mp3`;
@@ -104,7 +111,7 @@ async function handleSelect(event) {
     state.picks.push(fragment);
     if (state.picks.length === 4) {
       state.phase = PHASE.FINALE;
-      console.log("FINALE", state.picks);
+      await finale();
       return;
     }
     await say("Ok, let's find the next one, then.", 2);
@@ -118,5 +125,34 @@ async function handleSelect(event) {
 document.querySelectorAll(".thumb").forEach(thumb => {
   thumb.addEventListener("click", handleSelect);
 });
+
+async function finale() {
+  sheet.hidden = true;
+  await say("So you think this is the last fragment, eh?", 2);
+  await say("Well, let's see how it all sounds together!", 2);
+
+  for (const fragment of state.picks) {
+    await playFragment(fragment);
+  }
+
+  // The fourth pick is forced by elimination: with three fragments already placed,
+  // only one remains.
+  const correct = state.picks[0] === 0 &&
+    state.picks[1] === 1 &&
+    state.picks[2] === 2;
+
+  if (correct) {
+    await say("Yes!! I think this might be it!!", 2);
+    await say("I've really done it...", 2);
+    await say("This piece is definitely ahead of its time!!", 2);
+    await say("The world of music will never be the same...", 2);
+    await say("And it's all thanks to you!!", 3);
+  } else {
+    await say("What? This can't be it, bro...", 2);
+    await say("Let's try again.", 2);
+    state.picks = [];
+    state.phase = PHASE.SELECTING;
+  }
+}
 
 intro();
