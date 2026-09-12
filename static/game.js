@@ -7,10 +7,11 @@ const PHASE = { // PHASE constant pattern suggested by Claude (as opposed to wri
   FINALE: "FINALE"
 };
 
+const ORDINALS = ["first", "second", "third", "fourth"];
+
 const state = {
   phase: PHASE.INTRO,
   picks: [],        // fragment IDs chosen so far, in order
-  currentFragment: null,
   shuffle: []         // thumbnail position -> fragment ID
 };
 
@@ -78,17 +79,44 @@ async function intro() {
   state.phase = PHASE.SELECTING;
 }
 
+async function handleSelect(event) {
+  if (state.phase !== PHASE.SELECTING) return;
+
+  const position = Number(event.currentTarget.dataset.position);
+  const fragment = state.shuffle[position];
+
+  if (state.picks.includes(fragment)) {
+    await say("But you already picked that one!", 2);
+    return;
+  }
+
+  state.phase = PHASE.CONFIRMING;
+
+  sheet.src = `/static/img/sheets/a${fragment}.png`;
+  sheet.hidden = false;
+  player.src = `/static/audio/astley${fragment}.mp3`;
+  player.play();
+
+  const ordinal = ORDINALS[state.picks.length];
+  const confirmed = await ask(`Do you think this fragment goes ${ordinal}?`);
+
+  if (confirmed) {
+    state.picks.push(fragment);
+    if (state.picks.length === 4) {
+      state.phase = PHASE.FINALE;
+      console.log("FINALE", state.picks);
+      return;
+    }
+    await say("Ok, let's find the next one, then.", 2);
+  } else {
+    await say("Ok, let's check another fragment.", 2);
+  }
+
+  state.phase = PHASE.SELECTING;
+}
 
 document.querySelectorAll(".thumb").forEach(thumb => {
-  thumb.addEventListener("click", () => {
-    if (state.phase !== PHASE.SELECTING) return;
-    const position = Number(thumb.dataset.position);
-    const fragment = state.shuffle[position];
-    sheet.src = `/static/img/sheets/a${fragment}.png`;
-    sheet.hidden = false;
-    player.src = `/static/audio/astley${fragment}.mp3`;
-    player.play();
-  });
+  thumb.addEventListener("click", handleSelect);
 });
 
 intro();
