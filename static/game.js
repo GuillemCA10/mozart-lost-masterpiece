@@ -78,8 +78,10 @@ async function intro() {
   state.phase = PHASE.SELECTING;
 }
 
+
 document.querySelectorAll(".thumb").forEach(thumb => {
   thumb.addEventListener("click", () => {
+    if (state.phase !== PHASE.SELECTING) return;
     const position = Number(thumb.dataset.position);
     const fragment = state.shuffle[position];
     sheet.src = `/static/img/sheets/a${fragment}.png`;
