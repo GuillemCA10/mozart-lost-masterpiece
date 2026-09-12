@@ -15,6 +15,12 @@ const state = {
   shuffle: []         // thumbnail position -> fragment ID
 };
 
+const VIOLIN_FRAMES = [
+  "violin01", "violin04", "violin07", "violin10", "violin13",
+  "violin16", "violin19", "violin22", "violin25", "violin28"
+];
+
+const mozart = document.getElementById("mozart");
 const sheet = document.getElementById("sheet");
 const dialogue = document.getElementById("dialogue");
 const choices = document.getElementById("choices");
@@ -101,8 +107,7 @@ async function handleSelect(event) {
   state.phase = PHASE.CONFIRMING;
   sheet.src = `/static/img/sheets/a${fragment}.png`;
   sheet.hidden = false;
-  player.src = `/static/audio/astley${fragment}.mp3`;
-  player.play();
+  await playWithViolin(fragment);
 
   const ordinal = ORDINALS[state.picks.length];
   const confirmed = await ask(`Do you think this fragment goes ${ordinal}?`);
@@ -126,13 +131,26 @@ document.querySelectorAll(".thumb").forEach(thumb => {
   thumb.addEventListener("click", handleSelect);
 });
 
+async function playWithViolin(fragment) {
+  let frame = 0;
+  const timer = setInterval(()=> {
+    mozart.src = `/static/img/mozart/${VIOLIN_FRAMES[frame]}.png`;
+    frame = (frame + 1) % VIOLIN_FRAMES.length;
+  }, 100);
+
+  await playFragment(fragment);
+
+  clearInterval(timer);
+  mozart.src = "/static/img/mozart/mozart.png";
+}
+
 async function finale() {
   sheet.hidden = true;
   await say("So you think this is the last fragment, eh?", 2);
   await say("Well, let's see how it all sounds together!", 2);
 
   for (const fragment of state.picks) {
-    await playFragment(fragment);
+    await playWithViolin(fragment);
   }
 
   // The fourth pick is forced by elimination: with three fragments already placed,
