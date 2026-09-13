@@ -1,31 +1,84 @@
+/* Page frame — dark surround, stage centred horizontally */
 body {
   background: #1a1a1a;
   color: #e8e8e8;
   font-family: Georgia, serif;
-  display: flex;
+  display: flex;            /* lets justify-content centre the stage */
   justify-content: center;
   padding: 2rem;
 }
 
-#dialogue {
-  font-style: italic;
+/* The fixed 960x705 canvas. Every game element positions against this box
+   rather than the page, so coordinates stay stable at any window size. */
+#stage {
+  position: relative;       /* reference frame for absolutely-positioned children */
+  width: 960px;
+  height: 705px;            /* matches the backdrop's native dimensions */
+  background-image: url("/static/img/backdrops/stage2.png");
+  background-size: cover;
+  overflow: hidden;         /* clips Mozart while he is still offstage left */
 }
 
-#thumbs {
-  display: flex;
-  gap: 1rem;
-}
-
-.thumb {
-  width: 120px;
-  cursor: pointer;
-}
-
-#sheet {
-  max-width: 500px;
-  margin: 1rem 0;
-}
-
+/* Mozart. Height rather than width: the standing and violin costumes have
+   different aspect ratios, so fixing height keeps him a consistent size
+   on the floor while his width varies with the pose. */
 #mozart {
-  width: 200px;
+  position: absolute;
+  height: 230px;
+  left: 200px;
+  bottom: 30px;
+}
+
+/* Mozart's dialogue */
+#dialogue {
+  position: absolute;
+  left: 280px;
+  bottom: 300px;
+  background: #f4f0e4;
+  color: #1a1a1a;
+  font-style: italic;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  border: 2px solid #2a2a2a;
+  max-width: 28ch;
+  margin: 0;
+}
+
+#dialogue::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 1.5rem;
+  border-width: 18px 12px 0 0;
+  border-style: solid;
+  border-color: #f4f0e4 transparent transparent transparent;
+}
+ 
+#choices {
+  position: absolute;
+  left: 300px;
+  bottom: 240px;
+}
+
+/* The full-size sheet music shown when a fragment is being inspected */
+#sheet {
+  position: absolute;
+  left: 480px;
+  top: 100px;
+  max-width: 400px;
+}
+
+/* Row of four face-down scrolls along the bottom of the stage */
+#thumbs {
+  position: absolute;
+  left: 330px;
+  bottom: 45px;
+  display: flex;            /* lays the four out in a row */
+  gap: 1.5rem;                /* even spacing without margins on each child */
+}
+
+/* Each individual scroll */
+.thumb {
+  width: 90px;
+  cursor: pointer;          /* signals they are clickable */
 }
