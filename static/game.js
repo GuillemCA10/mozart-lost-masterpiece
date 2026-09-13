@@ -15,6 +15,11 @@ const state = {
   shuffle: []         // thumbnail position -> fragment ID
 };
 
+const WALK_FRAMES = [
+  "walking004", "walking007", "walking010",
+  "walking013", "walking016", "walking019", "walking022"
+];
+
 const VIOLIN_FRAMES = [
   "violin01", "violin04", "violin07", "violin10", "violin13",
   "violin16", "violin19", "violin22", "violin25", "violin28"
@@ -25,6 +30,16 @@ const sheet = document.getElementById("sheet");
 const dialogue = document.getElementById("dialogue");
 const choices = document.getElementById("choices");
 const player = new Audio();
+
+function preload(names) {
+  for (const name of names) {
+    const img = new Image();
+    img.src = `/static/img/mozart/${name}.png`;
+  }
+}
+
+preload(WALK_FRAMES);
+preload(VIOLIN_FRAMES);
 
 function shuffled() {
   const pool = [0, 1, 2, 3];
@@ -75,6 +90,7 @@ function ask(question) {
 }
 
 async function intro() {
+  await walkIn();
   await say("Damn!", 1.5);
   await say("The pages of my newest masterpiece... they're all scattered!", 3);
   await say("Despite being the GOAT of composers...", 2);
@@ -130,6 +146,30 @@ async function handleSelect(event) {
 document.querySelectorAll(".thumb").forEach(thumb => {
   thumb.addEventListener("click", handleSelect);
 });
+
+function walkIn() {
+  return new Promise(resolve => {
+    let frame = 0;
+    let x = -150;
+
+    mozart.style.left = `${x}px`;
+
+    const timer = setInterval(() => {
+      mozart.src = `/static/img/mozart/${WALK_FRAMES[frame]}.png`;
+      frame = (frame + 1) % WALK_FRAMES.length;
+
+      x += 12;
+      mozart.style.left = `${x}px`;
+
+      if (x >= 200) {
+        clearInterval(timer);
+        mozart.src = "/static/img/mozart/mozart.png";
+        mozart.style.left = ""; //  drop the inline override; CSS owns his resting spot.
+        resolve();
+      }
+    }, 70);
+  });
+}
 
 async function playWithViolin(fragment) {
   let frame = 0;
