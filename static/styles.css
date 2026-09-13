@@ -25,15 +25,15 @@ body {
 #mozart {
   position: absolute;
   height: 230px;
-  left: 200px;
-  bottom: 30px;
+  left: 170px;
+  bottom: 0px;
 }
 
 /* Mozart's dialogue */
 #dialogue {
   position: absolute;
-  left: 280px;
-  bottom: 300px;
+  left: 300px;
+  bottom: 200px;
   background: #f4f0e4;
   color: #1a1a1a;
   font-style: italic;
@@ -44,20 +44,38 @@ body {
   margin: 0;
 }
 
+#dialogue:empty {
+  display: none;
+}
+
 #dialogue::after {
   content: "";
   position: absolute;
   bottom: -18px;
-  left: 1.5rem;
+  left: 1rem;
   border-width: 18px 12px 0 0;
   border-style: solid;
   border-color: #f4f0e4 transparent transparent transparent;
 }
- 
+
 #choices {
   position: absolute;
-  left: 300px;
-  bottom: 240px;
+  left: 50%;
+  bottom: 340px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+#choices[hidden] {
+  display: none;    /* the [hidden] attribute loses to the display above without this */
+}
+
+#choices button {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.8rem;
+  cursor: pointer;
 }
 
 /* The full-size sheet music shown when a fragment is being inspected */

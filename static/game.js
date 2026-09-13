@@ -72,6 +72,7 @@ function playFragment(fragment) {
 async function say(text, seconds) {
   dialogue.textContent = text;
   await sleep(seconds * 1000);
+  dialogue.textContent = "";
 }
 
 function ask(question) {
@@ -161,7 +162,7 @@ function walkIn() {
       x += 12;
       mozart.style.left = `${x}px`;
 
-      if (x >= 200) {
+      if (x >= 170) {
         clearInterval(timer);
         mozart.src = "/static/img/mozart/mozart.png";
         mozart.style.left = ""; //  drop the inline override; CSS owns his resting spot.
