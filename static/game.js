@@ -91,7 +91,9 @@ function ask(question) {
 }
 
 async function intro() {
+  await sleep(2000);
   await walkIn();
+  await sleep(1500);
   await say("Damn!", 1.5);
   await say("The pages of my newest masterpiece... they're all scattered!", 3);
   await say("Despite being the GOAT of composers...", 2);
@@ -156,6 +158,7 @@ function walkIn() {
     let x = -150;
 
     mozart.style.left = `${x}px`;
+    mozart.hidden = false;
 
     const steps = new Audio("/static/audio/footsteps.wav");
     steps.loop = true;
@@ -232,10 +235,13 @@ async function finale() {
 }
 
 document.getElementById("start").onclick = async () => {
-  document.getElementById("title").hidden = true;
+  document.getElementById("start").hidden = true;
 
   const theme = new Audio("/static/audio/40.mp3");
   theme.play();
+
+  await sleep(2000);
+  document.getElementById("title").hidden = true;
 
   await intro();
 };
