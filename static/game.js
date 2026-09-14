@@ -107,6 +107,8 @@ async function intro() {
   }
 
   await say("Cool! Let's get to it.", 2);
+  await revealThumbs();
+  await say("Pick one of the fragments and I'll play it for you.", 3);
   state.phase = PHASE.SELECTING;
 }
 
@@ -155,6 +157,10 @@ function walkIn() {
 
     mozart.style.left = `${x}px`;
 
+    const steps = new Audio("/static/audio/footsteps.wav");
+    steps.loop = true;
+    steps.play();
+
     const timer = setInterval(() => {
       mozart.src = `/static/img/mozart/${WALK_FRAMES[frame]}.png`;
       frame = (frame + 1) % WALK_FRAMES.length;
@@ -164,12 +170,23 @@ function walkIn() {
 
       if (x >= 170) {
         clearInterval(timer);
+        steps.pause();
         mozart.src = "/static/img/mozart/mozart.png";
-        mozart.style.left = ""; //  drop the inline override; CSS owns his resting spot.
+        mozart.style.left = "";
         resolve();
       }
     }, 70);
   });
+}
+
+async function revealThumbs() {
+  const rip = new Audio("/static/audio/rip.wav");
+  for (const thumb of document.querySelectorAll(".thumb")) {
+    thumb.hidden = false;
+    rip.currentTime = 0;
+    rip.play();
+    await sleep(1000);
+  }
 }
 
 async function playWithViolin(fragment) {
@@ -214,4 +231,11 @@ async function finale() {
   }
 }
 
-intro();
+document.getElementById("start").onclick = async () => {
+  document.getElementById("title").hidden = true;
+
+  const theme = new Audio("/static/audio/40.mp3");
+  theme.play();
+
+  await intro();
+};

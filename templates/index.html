@@ -8,6 +8,9 @@
   </head>
   <body>
     <main id="stage">
+      <div id="title">
+        <button id="start">Start</button>
+      </div>
       <img id="mozart" src="{{ url_for('static', filename='img/mozart/mozart.png') }}" alt="Mozart">
       <p id="dialogue"></p>
       <div id="choices" hidden>
@@ -16,10 +19,10 @@
       </div>
       <img id="sheet" src="" alt="Sheet music fragment" hidden>     
       <div id="thumbs">
-        <img class="thumb" data-position="0" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
-        <img class="thumb" data-position="1" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
-        <img class="thumb" data-position="2" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
-        <img class="thumb" data-position="3" src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
+        <img class="thumb" data-position="0" hidden src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
+        <img class="thumb" data-position="1" hidden src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
+        <img class="thumb" data-position="2" hidden src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
+        <img class="thumb" data-position="3" hidden src="{{ url_for('static', filename='img/thumbs/score-sprite-no-bg.png') }}" alt="Sheet music fragment">
       </div>
     </main>
     <script src="{{ url_for('static', filename='game.js') }}"></script>

@@ -100,3 +100,26 @@ body {
   width: 90px;
   cursor: pointer;          /* signals they are clickable */
 }
+
+#title {
+  position: absolute;
+  inset: 0;
+  background-image: url("/static/img/backdrops/title.png");
+  background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 4rem;
+  z-index: 10;
+}
+
+#title[hidden] {
+  display: none;
+}
+
+#start {
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+  padding: 0.8rem 2.5rem;
+  cursor: pointer;
+}
