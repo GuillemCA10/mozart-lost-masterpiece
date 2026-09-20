@@ -40,6 +40,11 @@ function preload(names) {
 
 preload(WALK_FRAMES);
 preload(VIOLIN_FRAMES);
+// Preload end screen
+for (let i = 1; i <= 4; i++) {
+  const img = new Image();
+  img.src = `/static/img/backdrops/mozart-endscreen${i}.png`;
+}
 
 function shuffled() {
   const pool = [0, 1, 2, 3];
@@ -192,6 +197,18 @@ async function revealThumbs() {
   }
 }
 
+async function endScreen() {
+  const endscreen = document.getElementById("endscreen");
+  const sonata = new Audio("/static/audio/8bit-mozart-sonata-16.mp3");
+  sonata.play();
+
+  for (let i = 1; i <= 4; i++) {
+    endscreen.src = `/static/img/backdrops/mozart-endscreen${i}.png`;
+    endscreen.hidden = false;
+    if (i < 4) await sleep(i === 1 ? 3000 : 6500);
+  }
+}
+
 async function playWithViolin(fragment) {
   let frame = 0;
   const timer = setInterval(()=> {
@@ -226,6 +243,7 @@ async function finale() {
     await say("This piece is definitely ahead of its time!!", 2);
     await say("The world of music will never be the same...", 2);
     await say("And it's all thanks to you!!", 3);
+    await endScreen();
   } else {
     await say("What? This can't be it, bro...", 2);
     await say("Let's try again.", 2);

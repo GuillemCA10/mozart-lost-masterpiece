@@ -123,3 +123,12 @@ body {
   padding: 0.8rem 2.5rem;
   cursor: pointer;
 }
+
+#endscreen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 20;
+}
