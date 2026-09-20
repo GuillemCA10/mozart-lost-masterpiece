@@ -7,7 +7,7 @@ const PHASE = { // PHASE constant pattern suggested by Claude (as opposed to wri
   FINALE: "FINALE"
 };
 
-const ORDINALS = ["first", "second", "third", "fourth"];
+const ORDINALS = ["first", "second", "third"];
 
 const state = {
   phase: PHASE.INTRO,
@@ -136,7 +136,9 @@ async function handleSelect(event) {
   await playWithViolin(fragment);
 
   const ordinal = ORDINALS[state.picks.length];
-  const confirmed = await ask(`Do you think this fragment goes ${ordinal}?`);
+  const confirmed = state.picks.length === 3
+    ? true
+    : await ask(`So you think this is the ${ordinal} fragment?`);
 
   if (confirmed) {
     state.picks.push(fragment);
@@ -188,13 +190,11 @@ function walkIn() {
 }
 
 async function revealThumbs() {
-  const rip = new Audio("/static/audio/rip.wav");
   for (const thumb of document.querySelectorAll(".thumb")) {
     thumb.hidden = false;
-    rip.currentTime = 0;
-    rip.play();
+    new Audio("/static/audio/rip.mp3").play();
     await sleep(1000);
-  }
+  } 
 }
 
 async function endScreen() {
@@ -222,14 +222,27 @@ async function playWithViolin(fragment) {
   mozart.src = "/static/img/mozart/mozart.png";
 }
 
+async function playSequenceWithViolin(fragments) {
+  let frame = 0;
+  const timer = setInterval(() => {
+    mozart.src = `/static/img/mozart/${VIOLIN_FRAMES[frame]}.png`;
+    frame = (frame + 1) % VIOLIN_FRAMES.length;
+  }, 100);
+
+  for (const fragment of fragments) {
+    await playFragment(fragment);
+  }
+  
+  clearInterval(timer);
+  mozart.src = "/static/img/mozart/mozart.png";
+}
+
 async function finale() {
   sheet.hidden = true;
   await say("So you think this is the last fragment, eh?", 2);
   await say("Well, let's see how it all sounds together!", 2);
-
-  for (const fragment of state.picks) {
-    await playWithViolin(fragment);
-  }
+  await playSequenceWithViolin(state.picks);
+  
 
   // The fourth pick is forced by elimination: with three fragments already placed,
   // only one remains.
