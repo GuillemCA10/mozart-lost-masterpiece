@@ -1,1 +1,0 @@
-Suggested I create a PHASE constant that defines the string literals of the four different game states (intro, selecting, confirming and finale) instead of directly setting the game state by typing phase: INTRO. This way typos become undefined and fail visibly instead of silently.
